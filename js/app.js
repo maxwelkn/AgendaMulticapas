@@ -10,6 +10,7 @@ const contactCount = document.querySelector("#contact-count");
 const contactList = document.querySelector("#contact-list");
 
 let contacts = [];
+let hasLoaded = false;
 
 function setStatus(element, message, state = "") {
   element.textContent = message;
@@ -46,6 +47,8 @@ function createContactItem(contact) {
 }
 
 function renderContacts() {
+  if (!hasLoaded) return;
+
   const query = searchInput.value.trim().toLocaleLowerCase("es");
   const visible = query
     ? contacts.filter((contact) =>
@@ -86,6 +89,7 @@ async function loadContacts() {
       apellido: getText(item.apellido),
       telefono: getText(item.telefono)
     }));
+    hasLoaded = true;
     renderContacts();
     return true;
   } catch (error) {
