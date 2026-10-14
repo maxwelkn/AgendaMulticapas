@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Agenda web para consultar y guardar contactos.">
+  <title>Agenda de contactos</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Agenda, inicio">
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <span>Agenda<span class="brand-dot">.</span></span>
+      </a>
+      <span class="course-label">Programación Web · Tarea 3</span>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="intro">
+      <span class="eyebrow">AGENDA MULTICAPAS</span>
+      <h1>Personas a un clic de distancia.</h1>
+      <p>Consulta los contactos guardados y agrega uno nuevo con su nombre, apellido y teléfono.</p>
+    </div>
+
+    <div class="workspace">
+      <section class="panel form-panel" aria-labelledby="form-title">
+        <div class="panel-heading">
+          <span class="panel-icon" aria-hidden="true">+</span>
+          <div>
+            <p class="section-label">NUEVO CONTACTO</p>
+            <h2 id="form-title">Agregar a la agenda</h2>
+          </div>
+        </div>
+        <p class="panel-description">Completa los tres campos para guardar el contacto.</p>
+
+        <form id="contact-form">
+          <div class="field">
+            <label for="first-name">Nombre</label>
+            <input id="first-name" name="nombre" type="text" autocomplete="given-name" maxlength="60" placeholder="Ej. Ana" required>
+          </div>
+          <div class="field">
+            <label for="last-name">Apellido</label>
+            <input id="last-name" name="apellido" type="text" autocomplete="family-name" maxlength="60" placeholder="Ej. Pérez" required>
+          </div>
+          <div class="field">
+            <label for="phone">Teléfono</label>
+            <input id="phone" name="telefono" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" placeholder="Ej. 809-555-1234" required>
+          </div>
+          <button id="submit-button" class="button button-primary" type="submit">Guardar contacto <span aria-hidden="true">↗</span></button>
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="panel contacts-panel" aria-labelledby="contacts-title">
+        <div class="contacts-heading">
+          <div>
+            <p class="section-label">DIRECTORIO</p>
+            <h2 id="contacts-title">Contactos <span id="contact-count" class="count">—</span></h2>
+          </div>
+          <button id="refresh-button" class="button button-secondary" type="button">Actualizar lista</button>
+        </div>
+
+        <label class="search-label" for="search">Buscar por nombre, apellido o teléfono</label>
+        <div class="search-wrap">
+          <span aria-hidden="true">⌕</span>
+          <input id="search" type="search" placeholder="Buscar contacto..." autocomplete="off">
+        </div>
+        <p id="list-status" class="list-status" role="status" aria-live="polite">Cargando contactos...</p>
+        <ul id="contact-list" class="contact-list" aria-label="Contactos guardados"></ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">Agenda de contactos · Programación Web</footer>
+</body>
+</html>
